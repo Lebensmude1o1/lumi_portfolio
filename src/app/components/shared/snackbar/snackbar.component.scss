@@ -15,7 +15,7 @@
   min-width: 320px;
   max-width: 500px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  color: var(--text);
+  color: var(--text-dark);
   animation: slide-up 0.4s ease-out;
 
   background-color: var(--secondary-color);
@@ -23,20 +23,20 @@
 
   &.success {
     background-color: var(--accent-success-dark);
-    border-left-color: #fff;
+    color: var(--text-dark);
   }
   &.error {
     background-color: var(--accent-danger-dark);
-    border-left-color: #fff;
+    color: var(--text-dark);
   }
   &.warning {
     background-color: var(--accent-warning-dark);
-    border-left-color: var(--text-dark);
     color: var(--text-dark);
+  }
 
-    .close-btn {
-      color: var(--text-dark);
-    }
+  &.info {
+    background-color: var(--accent-info);
+    color: var(--text-dark);
   }
 }
 
@@ -75,7 +75,7 @@
 .close-btn {
   background: transparent;
   border: none;
-  color: var(--text-light);
+  color: var(--text-dark);
   cursor: pointer;
   margin-left: 1.5rem;
   padding: 0;

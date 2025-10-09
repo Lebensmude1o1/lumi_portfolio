@@ -38,6 +38,50 @@ $dark-theme: mat.define-theme((
 // that you are using.
 :root {
   @include mat.all-component-themes($sadiksha-theme);
+
+  --text-light: #000000;
+  --text-dark: #ffffff;
+
+
+
+  --accent-success: #27ae60;      /* Green for success or 'Agree' buttons */
+  --accent-success-dark: #229954; /* A darker green for hover effects */
+
+  --accent-warning: #f39c12;      /* Orange for warnings or actions that require caution */
+  --accent-warning-dark: #e67e22; /* A darker orange for hover effects */
+
+  --accent-danger: #e74c3c;       /* Red for destructive actions or 'Danger' buttons */
+  --accent-danger-dark: #c0392b;  /* A darker red for hover effects */
+
+  --accent-info: #0ecfd6;
+  --accent-info-dark: #078076;
+
+  /* Backgrounds */
+  --background-light: #FFFFFF;
+  --background-dark: #000000;
+
+  /* Shadow Colors */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Spacing (optional - for consistency across components) */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
