@@ -10,13 +10,14 @@
 
 .contact-intro {
   font-size: 1.25rem;
+  color: var(--text-primary);
   margin-bottom: 2rem;
   text-align: center;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 1.5rem;
 }
 
@@ -24,26 +25,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 0.75rem;
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.15);
+  }
 
   svg {
     width: 2rem;
     height: 2rem;
     margin-bottom: 0.75rem;
+    stroke-width: 1.5;
   }
 
   h3 {
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin: 0;
     font-size: 1.125rem;
-  }
-
-  p {
-    color: var(--text-secondary);
   }
 }
 

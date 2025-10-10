@@ -15,9 +15,12 @@
     </div>
     <p class="work-description">{{ experience.description }}</p>
 
-    <div class="photo-grid" *ngIf="experience.photos && experience.photos.length > 0">
+    <div class="photo-scroll-container" *ngIf="experience.photos && experience.photos.length > 0">
       <div class="photo-item" *ngFor="let photo of experience.photos" (click)="openImage(photo.imageUrl)">
         <img [src]="photo.imageUrl" [alt]="photo.caption">
+        <div class="photo-caption">
+          <p>{{ photo.caption }}</p>
+        </div>
       </div>
     </div>
 

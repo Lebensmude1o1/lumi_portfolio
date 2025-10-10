@@ -27,7 +27,7 @@ export interface JobExperienceDTO {
   id: number;
   title: string;
   company: string;
-  location: string;
+  location: string | null;
   employmentType: string;
   description: string;
   achievements: string[];
@@ -39,7 +39,7 @@ export interface JobExperienceDTO {
   insertUser: string;
   editUser: string;
   photos: JobExperiencePhotoDTO[];
-  extra?: Record<string, string>;
+  extra?: Record<string, string> | null;
 }
 
 export interface jobExperienceResponse extends RestApiResponse<never, JobExperienceDTO[]> {}

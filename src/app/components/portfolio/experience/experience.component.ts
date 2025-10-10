@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {JobExperienceDTO} from "../../../model/api-responses";
 import {CommonModule} from "@angular/common";
 import {ImageService} from "../../../services/image/image.service";
@@ -11,11 +11,17 @@ import {Model3dService} from "../../../services/3d/model3d.service";
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss'
 })
-export class ExperienceComponent {
+export class ExperienceComponent implements OnInit{
   @Input() experience!: JobExperienceDTO;
   showDetails = false;
 
   constructor(private imageService: ImageService, private modelService: Model3dService) {}
+
+  ngOnInit(): void {
+    if (this.experience.photos && this.experience.photos.length > 0) {
+      this.experience.photos.sort((a, b) => a.displayOrder - b.displayOrder);
+    }
+  }
 
   getBadgeClass(type: string): string {
     const classes: { [key: string]: string } = {
@@ -23,7 +29,8 @@ export class ExperienceComponent {
       academic: 'badge-academic',
       freelance: 'badge-freelance',
       training: 'badge-training',
-      project: 'badge-academic'
+      project: 'badge-academic',
+      'full-time': 'badge-fulltime'
     };
     return classes[type] || 'badge-internship';
   }

@@ -4,14 +4,186 @@ import {environment} from "../../../environments/environment";
 import {ApiService} from "../mainApi/api.service";
 import {Observable} from "rxjs";
 
+// @ts-ignore
 export const STATIC_JOB_DATA: JobExperienceDTO[] = [
-  { "id": 4, "title": "Full-Stack Developer (Intern → Trainee → Junior Backend Developer)", "company": "Ismart (Devana Soft Pvt. Ltd.)", "location": "Kathmandu, Nepal", "employmentType": "full-time", "description": "Contributed to both frontend and backend development at Devana Soft Pvt. Ltd., with progressive responsibility from intern to junior backend developer. During the internship phase, worked on the backend of the Meeting Management System project, then transitioned to Ismart, where I focused on building scalable backend solutions while also contributing to Angular frontend development. Additionally, gained hands-on deployment experience by managing servers through SSH and Docker.", "achievements": ["Developed and optimized RESTful APIs using Spring Boot and Spring MVC for Ismart and internal projects.", "Designed and maintained database schemas to support scalable web applications.", "Contributed to Angular frontend features, improving UI functionality and user workflows.", "Enhanced the Meeting Management System backend by implementing database operations and API endpoints.", "Deployed applications manually to backend servers using SSH and Docker, strengthening deployment and infrastructure knowledge.", "Actively collaborated in agile sprints, ensuring on-time delivery of high-quality features.", "Successfully promoted from Intern → Trainee → Junior Backend Developer based on consistent performance."], "technologiesUsed": ["Java", "Spring Boot", "Spring MVC", "REST APIs", "MySQL", "PostgreSQL", "Angular", "Git", "Agile", "Docker", "SSH"], "startDate": "2024-12-10", "endDate": "present", "isCurrent": true, "displayOrder": 3, "insertUser": "admin", "editUser": "admin", "photos": [] },
-  { "id": 6, "title": "Full-Stack Developer", "company": "Personal Project – AI Portfolio Web Application", "location": "Remote", "employmentType": "project", "description": "Designed and deployed a full-stack portfolio web application with integrated AI services. The platform supports multiple users, allowing each to create a personalized portfolio by providing their professional experiences, AI profile, and response preferences, which are stored in a PostgreSQL database. The system not only serves as an interactive personal portfolio but also integrates an AI-powered chatbot that can converse about the user based on their data. A live example is available at www.progress.com.np.", "achievements": ["Developed a responsive Angular frontend to display dynamic, user-specific portfolios.", "Built a scalable Spring Boot backend to manage multi-user data, authentication, and chatbot logic.", "Integrated PostgreSQL database for structured storage of user profiles, experiences, and AI response preferences.", "Implemented an AI-driven chatbot that adapts its responses according to individual user data and preferences.", "Deployed the application publicly, showcasing its ability to handle multiple users while maintaining security and scalability."], "technologiesUsed": ["Angular", "Spring Boot", "Java", "PostgreSQL", "REST APIs", "AI Integration", "langchain4j", "Cloudinary", "Git", "Docker"], "startDate": "2025-08-16", "endDate": "2025-08-30", "isCurrent": false, "displayOrder": 5, "insertUser": "admin", "editUser": "admin", "photos": [] },
-  { "id": 2, "title": "Website Developer", "company": "Kipaa", "location": "Online", "employmentType": "freelance", "description": "Built and maintained a professional web application where clients can request engineering services, contact the company, and stay updated on announcements. Currently implementing a separate frontend server using Angular to improve scalability and user experience. Visit: www.kipaa.com.np", "achievements": ["Developed a responsive web interface for clients to browse services and projects.", "Implemented content management features to streamline company updates.", "Improved overall site performance and accessibility for users.", "Began migration of frontend to Angular for better modularity and maintainability."], "technologiesUsed": ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Angular"], "startDate": "2023-01-01", "endDate": "present", "isCurrent": true, "displayOrder": 1, "insertUser": "admin", "editUser": "N/A", "photos": [] },
-  { "id": 5, "title": "Full Stack Developer (College Project 3 - Meal Mapper)", "company": "Nepal Engineering College", "location": "University", "employmentType": "project", "description": "Developed a health-oriented mobile application that integrates machine learning to recognize food items and recommend meals based on nutritional content and user history.", "achievements": ["Built backend services in Python to support machine learning-driven recommendations.", "Developed mobile frontend using Flutter for cross-platform compatibility.", "Implemented a neural network model to recognize food items from image inputs.", "Enhanced user engagement with personalized meal suggestions."], "technologiesUsed": ["Flutter", "Python", "Machine Learning", "Neural Networks", "REST APIs", "Flask", "Dart", "PostgreSQL", "Git"], "startDate": "2024-01-01", "endDate": "2024-12-01", "isCurrent": false, "displayOrder": 4, "insertUser": "admin", "editUser": "N/A", "photos": [] },
-  { "id": 3, "title": "Full Stack Developer (College Project 2 - Negotium)", "company": "Nepal Engineering College", "location": "University", "employmentType": "project", "description": "Developed an Android-based e-commerce application for local shops, featuring an offline mode that allows users to browse products and make purchases without an internet connection.", "achievements": ["Built backend services using Java for Android to handle offline purchasing functionality and PHP for server-side operations.", "Implemented offline-first capabilities with SQLite, ensuring smooth user experience without internet connectivity.", "Integrated RESTful APIs for product management, order processing, and data synchronization."], "technologiesUsed": ["Java (Android)", "PHP", "SQLite", "JSON", "REST APIs"], "startDate": "2023-01-01", "endDate": "2024-01-01", "isCurrent": false, "displayOrder": 2, "insertUser": "admin", "editUser": "admin", "photos": [] },
-  { "id": 1, "title": "LocatoR for College Project 1", "company": "Nepal Engineering College", "location": "University", "employmentType": "project", "description": "Developed a web application designed to provide location-based reviews where users can recommend new places to visit and stay informed about ongoing events in various locations.", "achievements": ["Designed and implemented backend functionality using PHP to manage user reviews and events.", "Improved user experience with AJAX-powered dynamic updates for seamless interactions.", "Strengthened application reliability with effective database management strategies."], "technologiesUsed": ["PHP", "AJAX", "HTML", "CSS", "JavaScript", "MySQL"], "startDate": "2022-01-01", "endDate": "2023-01-01", "isCurrent": false, "displayOrder": 0, "insertUser": "admin", "editUser": "N/A", "photos": [] }
-];
+    {
+      "id": 6,
+      "title": "Architectural Intern",
+      "company": "Hyphen Design and Consultant Pvt. Ltd.",
+      "location": null,
+      "employmentType": "internship",
+      "description": "Worked as an intern under professional architects and engineers on residential and interior projects. Participated in design development, drafting, and site supervision activities to gain practical exposure to architectural workflows.",
+      "achievements": [
+        "Prepared working drawings and presentation sheets for residential projects under mentor guidance.",
+        "Assisted in interior design projects by producing layout plans and 3D visualizations.",
+        "Visited project sites to document existing conditions and assist in site measurements."
+      ],
+      "technologiesUsed": [
+        "AutoCAD",
+        "SketchUp",
+        "Lumion",
+        "Photoshop"
+      ],
+      "startDate": "2024-09-08",
+      "endDate": "2024-11-30",
+      "isCurrent": false,
+      "displayOrder": 1,
+      "insertUser": "admin",
+      "editUser": "N/A",
+      "photos": [],
+      "extra": null
+    },
+    {
+      "id": 8,
+      "title": "Freelance Interior Designer",
+      "company": "Residential Apartment Project",
+      "location": null,
+      "employmentType": "freelance",
+      "description": "Designed the interior of a two-bedroom apartment, focusing on functionality, minimalism, and cost efficiency. Handled client meetings, space planning, and final presentation drawings.",
+      "achievements": [
+        "Delivered design layouts that optimized lighting and furniture placement.",
+        "Provided material and color palette suggestions aligning with client preferences.",
+        "Produced detailed 3D renders for client approval."
+      ],
+      "technologiesUsed": [
+        "SketchUp",
+        "V-Ray",
+        "AutoCAD",
+        "Photoshop"
+      ],
+      "startDate": "2024-03-01",
+      "endDate": "2024-04-20",
+      "isCurrent": false,
+      "displayOrder": 3,
+      "insertUser": "admin",
+      "editUser": "N/A",
+      "photos": [],
+      "extra": null
+    },
+    {
+      "id": 9,
+      "title": "Community Center Design – Academic Project",
+      "company": "Nepal Engineering College",
+      "location": null,
+      "employmentType": "academic",
+      "description": "Collaborated with a team of students to design a sustainable and inclusive community center that encourages social interaction and recreation.",
+      "achievements": [
+        "Contributed to site analysis, conceptual design, and presentation drawings.",
+        "Focused on accessibility and open-space design for community engagement.",
+        "Produced final drawings and renders showcased in the departmental exhibition."
+      ],
+      "technologiesUsed": [
+        "AutoCAD",
+        "SketchUp",
+        "Lumion",
+        "InDesign"
+      ],
+      "startDate": "2023-08-01",
+      "endDate": "2023-11-30",
+      "isCurrent": false,
+      "displayOrder": 4,
+      "insertUser": "admin",
+      "editUser": "N/A",
+      "photos": [
+        {
+          "id": 14,
+          "imageUrl": "http://res.cloudinary.com/dcqktjyqh/image/upload/v1760064965/portfolio_images/xpyg0eamidy9lipqdbft.jpg",
+          "caption": "this is a real good test",
+          "displayOrder": 1
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": 10,
+      "title": "Research on Sustainable Building Materials in Nepal",
+      "company": "Nepal Engineering College – Department of Architecture",
+      "location": null,
+      "employmentType": "academic",
+      "description": "Conducted a study on locally available sustainable materials suitable for modern residential design in Nepal. The project emphasized environmental impact and material lifecycle assessment.",
+      "achievements": [
+        "Collected and analyzed data on traditional and alternative eco-friendly materials.",
+        "Published a short paper summarizing material comparisons and environmental impact.",
+        "Presented findings at a departmental research seminar."
+      ],
+      "technologiesUsed": [
+        "MS Excel",
+        "AutoCAD",
+        "Photoshop"
+      ],
+      "startDate": "2023-12-01",
+      "endDate": "2024-02-15",
+      "isCurrent": false,
+      "displayOrder": 5,
+      "insertUser": "admin",
+      "editUser": "N/A",
+      "photos": [
+        {
+          "id": 15,
+          "imageUrl": "http://res.cloudinary.com/dcqktjyqh/image/upload/v1760064994/portfolio_images/w0io5crnijczpp9qhinx.jpg",
+          "caption": "this is another good exp",
+          "displayOrder": 0
+        }
+      ],
+      "extra": null
+    },
+    {
+      "id": 11,
+      "title": "Parametric Design Workshop Participant",
+      "company": "Parametric Architecture Nepal",
+      "location": null,
+      "employmentType": "training",
+      "description": "Attended a hands-on workshop focusing on computational and parametric design tools for architectural innovation.",
+      "achievements": [
+        "Learned fundamentals of parametric modeling and algorithmic design processes.",
+        "Created experimental façade designs using generative modeling techniques.",
+        "Collaborated with peers on a final concept model presented at the workshop closing."
+      ],
+      "technologiesUsed": [
+        "Rhinoceros 3D",
+        "Grasshopper",
+        "Photoshop"
+      ],
+      "startDate": "2024-07-10",
+      "endDate": "2024-07-15",
+      "isCurrent": false,
+      "displayOrder": 6,
+      "insertUser": "admin",
+      "editUser": "N/A",
+      "photos": [],
+      "extra": null
+    },
+    {
+      "id": 7,
+      "title": "Final Year Architectural Thesis Project",
+      "company": "Nepal Engineering College",
+      "location": null,
+      "employmentType": "academic",
+      "description": "Completed a comprehensive architectural thesis focused on sustainable urban housing in the Kathmandu Valley. The project explored energy-efficient materials and spatial optimization for dense urban areas.",
+      "achievements": [
+        "Developed conceptual and detailed designs for a multi-family urban housing complex.",
+        "Created 3D visualizations and walkthroughs demonstrating sustainable design elements.",
+        "Presented the final project to a jury panel and received positive feedback on design clarity."
+      ],
+      "technologiesUsed": [
+        "Revit",
+        "SketchUp",
+        "AutoCAD",
+        "Photoshop",
+        "Lumion"
+      ],
+      "startDate": "2025-01-15",
+      "endDate": "2025-06-15",
+      "isCurrent": false,
+      "displayOrder": 2,
+      "insertUser": "admin",
+      "editUser": "N/A",
+      "photos": [],
+      "extra": {
+        "modelURL": "https://test.ismart.devanasoft.com.np/ismart/bankApps/test/portfolio/sadikshya/FinalYearArchitecturalThesisProject7/experi.glb"
+      }
+    }
+  ];
 
 @Injectable({
   providedIn: 'root'
