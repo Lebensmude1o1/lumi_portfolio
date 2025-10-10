@@ -3,5 +3,5 @@ export const environment = {
   apiUrl: 'https://personalportfoliobackend-1.onrender.com',
   userId: 1,
   enableLogging: true,
-  username: 'Progress Maharjan'
+  username: 'Sadiksha Shrestha'
 };

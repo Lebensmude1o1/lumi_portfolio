@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sadiksha Shrestha - Architecture Portfolio</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(to bottom right, #0f172a, #581c87, #0f172a);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.2;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='white' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .profile-img {
+      width: 10rem;
+      height: 10rem;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      background: linear-gradient(to bottom right, #c084fc, #f9a8d4);
+      padding: 0.25rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .profile-img-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.75rem;
+      font-weight: bold;
+      color: #9333ea;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: #e9d5ff;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      background: white;
+      color: #581c87;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button:hover {
+      background: #f3e8ff;
+      transform: scale(1.05);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 1rem;
+        max-width: 72rem;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      color: #1f2937;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    /* About Section */
+    .about-card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      padding: 3rem;
+    }
+
+    .about-card p {
+      font-size: 1.125rem;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+    }
+
+    .stat-card:nth-child(1) { background: linear-gradient(to bottom right, #faf5ff, #fce7f3); }
+    .stat-card:nth-child(2) { background: linear-gradient(to bottom right, #eff6ff, #ecfeff); }
+    .stat-card:nth-child(3) { background: linear-gradient(to bottom right, #f0fdf4, #d1fae5); }
+
+    .stat-number {
+      font-size: 1.875rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card:nth-child(1) .stat-number { color: #9333ea; }
+    .stat-card:nth-child(2) .stat-number { color: #2563eb; }
+    .stat-card:nth-child(3) .stat-number { color: #16a34a; }
+
+    .stat-label {
+      color: #4b5563;
+    }
+
+    /* Work Section */
+    .work-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .work-card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .work-card:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .work-card-content {
+      padding: 2rem;
+    }
+
+    .work-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .work-title-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .work-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .work-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1f2937;
+    }
+
+    .badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-internship { background: #dbeafe; color: #1e40af; }
+    .badge-academic { background: #f3e8ff; color: #6b21a8; }
+    .badge-freelance { background: #dcfce7; color: #15803d; }
+    .badge-training { background: #fed7aa; color: #9a3412; }
+
+    .work-company {
+      color: #9333ea;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .work-date {
+      display: flex;
+      align-items: center;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+
+    .work-date i {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .work-description {
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      aspect-ratio: 16/9;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .photo-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .photo-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: black;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .photo-item:hover::after {
+      opacity: 0.3;
+    }
+
+    .work-details {
+      margin-top: 1.5rem;
+      display: none;
+    }
+
+    .work-details.show {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .achievements, .technologies {
+      margin-bottom: 1.5rem;
+    }
+
+    .details-title {
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .details-title i {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-right: 0.5rem;
+      color: #9333ea;
+    }
+
+    .achievements ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+      color: #374151;
+    }
+
+    .achievements li {
+      margin-bottom: 0.25rem;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      padding: 0.25rem 0.75rem;
+      background: #f3f4f6;
+      color: #374151;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .model-link {
+      display: inline-flex;
+      align-items: center;
+      color: #9333ea;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .model-link:hover {
+      color: #7e22ce;
+    }
+
+    .model-link i {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .toggle-button {
+      margin-top: 1rem;
+      color: #9333ea;
+      font-weight: 600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .toggle-button:hover {
+      color: #7e22ce;
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: linear-gradient(to bottom right, #581c87, #9d174d);
+      border-radius: 1rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      padding: 3rem;
+      color: white;
+    }
+
+    .contact-intro {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-item i {
+      width: 2rem;
+      height: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-item h3 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
+    }
+
+    .contact-item p {
+      color: #e9d5ff;
+    }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    footer p {
+      color: #9ca3af;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.125rem;
+      }
+
+      .about-card, .work-card-content, .contact-card {
+        padding: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.875rem;
+      }
+
+      .work-title {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Hero Section -->
+<div class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-content" id="hero-content">
+    <div class="profile-img">
+      <div class="profile-img-inner">SS</div>
+    </div>
+    <h1>Sadiksha Shrestha</h1>
+    <p>Architectural Designer & Sustainable Design Enthusiast</p>
+    <button class="cta-button" onclick="scrollToContact()">Get In Touch</button>
+  </div>
+  <div class="scroll-indicator">
+    <i data-lucide="chevron-down" style="color: white; width: 2rem; height: 2rem;"></i>
+  </div>
+</div>
+
+<!-- About Section -->
+<section>
+  <h2>About Me</h2>
+  <div class="about-card">
+    <p>I'm a final-year architecture student at Nepal Engineering College with a passion for sustainable design and innovative spatial solutions. My journey in architecture has been driven by a commitment to creating spaces that are not only aesthetically pleasing but also environmentally responsible and socially inclusive.</p>
+    <p>Throughout my academic career and professional experiences, I've developed expertise in both traditional architectural workflows and cutting-edge computational design tools. From hands-on site supervision to parametric modeling, I embrace every opportunity to expand my skillset and contribute to meaningful projects.</p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Design Tools Mastered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Months Internship</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work Section -->
+<section>
+  <h2>My Work</h2>
+  <div class="work-grid" id="work-grid"></div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Let's Connect</h2>
+  <div class="contact-card">
+    <p class="contact-intro">I'm always open to discussing new projects, creative ideas, or opportunities to contribute to sustainable architectural solutions.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <i data-lucide="mail"></i>
+        <h3>Email</h3>
+        <p>sadiksha@example.com</p>
+      </div>
+      <div class="contact-item">
+        <i data-lucide="phone"></i>
+        <h3>Phone</h3>
+        <p>+977 98XXXXXXXX</p>
+      </div>
+      <div class="contact-item">
+        <i data-lucide="map-pin"></i>
+        <h3>Location</h3>
+        <p>Kathmandu, Nepal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 Sadiksha Shrestha. Crafting sustainable spaces for a better tomorrow.</p>
+</footer>
+
+<script>
+  const experiences = [
+    {
+      id: 6,
+      title: "Architectural Intern",
+      company: "Hyphen Design and Consultant Pvt. Ltd.",
+      employmentType: "internship",
+      description: "Worked as an intern under professional architects and engineers on residential and interior projects. Participated in design development, drafting, and site supervision activities to gain practical exposure to architectural workflows.",
+      achievements: [
+        "Prepared working drawings and presentation sheets for residential projects under mentor guidance.",
+        "Assisted in interior design projects by producing layout plans and 3D visualizations.",
+        "Visited project sites to document existing conditions and assist in site measurements."
+      ],
+      technologiesUsed: ["AutoCAD", "SketchUp", "Lumion", "Photoshop"],
+      startDate: "2024-09-08",
+      endDate: "2024-11-30",
+      photos: []
+    },
+    {
+      id: 7,
+      title: "Final Year Architectural Thesis Project",
+      company: "Nepal Engineering College",
+      employmentType: "academic",
+      description: "Completed a comprehensive architectural thesis focused on sustainable urban housing in the Kathmandu Valley. The project explored energy-efficient materials and spatial optimization for dense urban areas.",
+      achievements: [
+        "Developed conceptual and detailed designs for a multi-family urban housing complex.",
+        "Created 3D visualizations and walkthroughs demonstrating sustainable design elements.",
+        "Presented the final project to a jury panel and received positive feedback on design clarity."
+      ],
+      technologiesUsed: ["Revit", "SketchUp", "AutoCAD", "Photoshop", "Lumion"],
+      startDate: "2025-01-15",
+      endDate: "2025-06-15",
+      photos: [],
+      extra: {
+        modelURL: "https://test.ismart.devanasoft.com.np/ismart/bankApps/test/portfolio/sadikshya/FinalYearArchitecturalThesisProject7/experi.glb"
+      }
+    },
+    {
+      id: 8,
+      title: "Freelance Interior Designer",
+      company: "Residential Apartment Project",
+      employmentType: "freelance",
+      description: "Designed the interior of a two-bedroom apartment, focusing on functionality, minimalism, and cost efficiency. Handled client meetings, space planning, and final presentation drawings.",
+      achievements: [
+        "Delivered design layouts that optimized lighting and furniture placement.",
+        "Provided material and color palette suggestions aligning with client preferences.",
+        "Produced detailed 3D renders for client approval."
+      ],
+      technologiesUsed: ["SketchUp", "V-Ray", "AutoCAD", "Photoshop"],
+      startDate: "2024-03-01",
+      endDate: "2024-04-20",
+      photos: []
+    },
+    {
+      id: 9,
+      title: "Community Center Design – Academic Project",
+      company: "Nepal Engineering College",
+      employmentType: "academic",
+      description: "Collaborated with a team of students to design a sustainable and inclusive community center that encourages social interaction and recreation.",
+      achievements: [
+        "Contributed to site analysis, conceptual design, and presentation drawings.",
+        "Focused on accessibility and open-space design for community engagement.",
+        "Produced final drawings and renders showcased in the departmental exhibition."
+      ],
+      technologiesUsed: ["AutoCAD", "SketchUp", "Lumion", "InDesign"],
+      startDate: "2023-08-01",
+      endDate: "2023-11-30",
+      photos: [
+        {
+          id: 14,
+          imageUrl: "http://res.cloudinary.com/dcqktjyqh/image/upload/v1760064965/portfolio_images/xpyg0eamidy9lipqdbft.jpg",
+          caption: "this is a real good test"
+        }
+      ]
+    },
+    {
+      id: 10,
+      title: "Research on Sustainable Building Materials in Nepal",
+      company: "Nepal Engineering College – Department of Architecture",
+      employmentType: "academic",
+      description: "Conducted a study on locally available sustainable materials suitable for modern residential design in Nepal. The project emphasized environmental impact and material lifecycle assessment.",
+      achievements: [
+        "Collected and analyzed data on traditional and alternative eco-friendly materials.",
+        "Published a short paper summarizing material comparisons and environmental impact.",
+        "Presented findings at a departmental research seminar."
+      ],
+      technologiesUsed: ["MS Excel", "AutoCAD", "Photoshop"],
+      startDate: "2023-12-01",
+      endDate: "2024-02-15",
+      photos: [
+        {
+          id: 15,
+          imageUrl: "http://res.cloudinary.com/dcqktjyqh/image/upload/v1760064994/portfolio_images/w0io5crnijczpp9qhinx.jpg",
+          caption: "this is another good exp"
+        },
+        {
+          id: 16,
+          imageUrl: "http://res.cloudinary.com/dcqktjyqh/image/upload/v1760065078/portfolio_images/tt2imzrzjfxrpawkjxgv.png",
+          caption: "another pic"
+        }
+      ]
+    }
+  ];
+
+  // Format date
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
+
+  // Get badge class
+  function getBadgeClass(type) {
+    const classes = {
+      internship: 'badge-internship',
+      academic: 'badge-academic',
+      freelance: 'badge-freelance',
+      training: 'badge-training'
+    };
+    return classes[type] || 'badge-internship';
+  }
+
+  // Render experiences
+  function renderExperiences() {
+    const workGrid = document.getElementById('work-grid');
+
+    experiences.forEach(exp => {
+      const card = document.createElement('div');
+      card.className = 'work-card';
+
+      let photosHtml = '';
+      if (exp.photos && exp.photos.length > 0) {
+        photosHtml = '<div class="photo-grid">';
+        exp.photos.forEach(photo => {
+          photosHtml += `
+                            <div class="photo-item">
+                                <img src="${photo.imageUrl}" alt="${photo.caption}">
+                            </div>
+                        `;
+        });
+        photosHtml += '</div>';
+      }
+
+      let achievementsHtml = '<ul>';
+      exp.achievements.forEach(achievement => {
+        achievementsHtml += `<li>${achievement}</li>`;
+      });
+      achievementsHtml += '</ul>';
+
+      let techHtml = '<div class="tech-tags">';
+      exp.technologiesUsed.forEach(tech => {
+        techHtml += `<span class="tech-tag">${tech}</span>`;
+      });
+      techHtml += '</div>';
+
+      let modelHtml = '';
+      if (exp.extra && exp.extra.modelURL) {
+        modelHtml = `
+                        <div style="margin-top: 1rem;">
+                            <a href="${exp.extra.modelURL}" target="_blank" class="model-link">
+                                <i data-lucide="external-link"></i>
+                                View 3D Model
+                            </a>
+                        </div>
+                    `;
+      }
+
+      card.innerHTML = `
+                    <div class="work-card-content">
+                        <div class="work-header">
+                            <div class="work-title-section">
+                                <div class="work-title-row">
+                                    <h3 class="work-title">${exp.title}</h3>
+                                    <span class="badge ${getBadgeClass(exp.employmentType)}">${exp.employmentType}</span>
+                                </div>
+                                <p class="work-company">${exp.company}</p>
+                                <div class="work-date">
+                                    <i data-lucide="calendar"></i>
+                                    ${formatDate(exp.startDate)} - ${formatDate(exp.endDate)}
+                                </div>
+                            </div>
+                        </div>
+                        <p class="work-description">${exp.description}</p>
+                        ${photosHtml}
+                        <div class="work-details" id="details-${exp.id}">
+                            <div class="achievements">
+                                <h4 class="details-title">
+                                    <i data-lucide="award"></i>
+                                    Key Achievements
+                                </h4>
+                                ${achievementsHtml}
+                            </div>
+                            <div class="technologies">
+                                <h4 class="details-title">Technologies Used</h4>
+                                ${techHtml}
+                            </div>
+                            ${modelHtml}
+                        </div>
+                        <button class="toggle-button" onclick="toggleDetails(${exp.id})">
+                            <span id="toggle-text-${exp.id}">Show More Details</span>
+                        </button>
+                    </div>
+                `;
+
+      workGrid.appendChild(card);
+    });
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+  }
+
+  // Toggle details
+  function toggleDetails(id) {
+    const details = document.getElementById(`details-${id}`);
+    const toggleText = document.getElementById(`toggle-text-${id}`);
+
+    if (details.classList.contains('show')) {
+      details.classList.remove('show');
+      toggleText.textContent = 'Show More Details';
+    } else {
+      details.classList.add('show');
+      toggleText.textContent = 'Show Less';
+    }
+  }
+
+  // Scroll to contact
+  function scrollToContact() {
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Parallax effect
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const heroBg = document.getElementById('hero-bg');
+    const heroContent = document.getElementById('hero-content');
+
+    if (heroBg) {
+      heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+    }
+    if (heroContent) {
+      heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+    }
+  });
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    renderExperiences();
+    lucide.createIcons();
+  });
+</script>
+</body>
+</html>

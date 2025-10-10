@@ -1,50 +1,89 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {finalize, Subscription} from "rxjs";
+import {ExperienceService, STATIC_JOB_DATA} from "../../../services/experience/experience.service";
+import {JobExperienceDTO, ResponseStatus} from "../../../model/api-responses";
+import {environment} from "../../../../environments/environment";
+import {PublicNavigationComponent} from "../public-navigation/public-navigation.component";
+import {CommonModule} from "@angular/common";
+import {ExperienceComponent} from "../experience/experience.component";
+import {ContactComponent} from "../contact/contact.component";
 import {SnackbarService} from "../../../services/snackbar.service";
-import {ImageService} from "../../../services/image/image.service";
-import {Model3dService} from "../../../services/3d/model3d.service";
-import {Subscription} from "rxjs";
-import {ExperienceService} from "../../../services/experience/experience.service";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-base-portfolio',
   standalone: true,
-  imports: [],
+  imports: [
+    PublicNavigationComponent,
+    CommonModule,
+    ExperienceComponent,
+    ContactComponent
+  ],
   templateUrl: './base-portfolio.component.html',
   styleUrl: './base-portfolio.component.scss'
 })
-export class BasePortfolioComponent {
+export class BasePortfolioComponent implements OnInit, OnDestroy {
 
-  private subscriptions= new Subscription();
-  constructor(private snackbarService: SnackbarService,
-              private imageService:ImageService,
-              private modelService: Model3dService,
-              private experienceService: ExperienceService) {
+  private subscriptions = new Subscription();
+  experiences: JobExperienceDTO[] = [];
+  isLoadingExperiences = true;
+  username = environment.username;
+  heroBgImage = 'backgroundHorizontal.webp';
+  today = new Date();
+
+  @ViewChild('heroBg', { static: true }) heroBg!: ElementRef;
+
+  constructor(private experienceService: ExperienceService,
+              private snackbarService: SnackbarService,
+              private renderer: Renderer2) {
+    this.setHeroBackground();
   }
 
-  onPress(){
-    this.snackbarService.show("this is just a test", "info");
+  ngOnInit(): void {
+    this.loadExperiences();
   }
 
-  onImage() {
-    this.imageService.open("https://progress.com.np/portfolioBackground.webp");
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setHeroBackground();
   }
 
-
-  on3Dmodel() {
-    this.modelService.open("https://test.ismart.devanasoft.com.np/ismart/bankApps/RadhaOliResidency2/b120b2a265e74d02b7c0517252b1c78f_opt.glb");
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollY = window.scrollY;
+    this.renderer.setStyle(this.heroBg.nativeElement, 'transform', `translateY(${scrollY * 0.3}px)`);
   }
 
-  onLoadExp(){
-    this.subscriptions.add(
-      this.experienceService.getExperience().subscribe({
-        next:(response) => {
-          console.log(response);
-        },
-        error:(err:HttpErrorResponse)=>{
-          console.log(err);
+  private setHeroBackground(): void {
+    if (window.innerWidth > window.innerHeight) {
+      this.heroBgImage = 'backgroundHorizontal.webp';
+    } else {
+      this.heroBgImage = 'backgroundVertical.webp';
+    }
+  }
+
+  private loadExperiences(): void {
+    this.isLoadingExperiences = true;
+    this.subscriptions.add(this.experienceService.getExperience().pipe(
+      finalize(() => this.isLoadingExperiences = false)
+    ).subscribe({
+      next: (response) => {
+        if (response.status === ResponseStatus.SUCCESS && response.details) {
+          this.experiences = response.details.sort((a, b) => a.displayOrder - b.displayOrder);
+        } else {
+          this.experiences = [...STATIC_JOB_DATA].sort((a, b) => a.displayOrder - b.displayOrder);
+          this.snackbarService.show(response.message || 'Failed to load experiences. Displaying static data.', 'info');
         }
-      })
-    )
+      },
+      error: (err: HttpErrorResponse) => {
+        console.error('Error loading experiences:', err);
+        this.snackbarService.show('Could not connect to server. Displaying static data.', 'error');
+        this.experiences = [...STATIC_JOB_DATA].sort((a, b) => a.displayOrder - b.displayOrder);
+      }
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

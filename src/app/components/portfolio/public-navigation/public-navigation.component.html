@@ -1,0 +1,23 @@
+<nav class="navbar" [class.hide-on-mobile]="isChatOpen">
+  <div class="nav-container">
+    <div class="logo" (click)="openRedirect()">{{name}}</div>
+
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="nav-menu" [class.show-menu]="isMenuOpen">
+      <ul class="nav-links">
+        <li><a (click)="scrollTo('home')">Home</a></li>
+        <li><a (click)="scrollTo('about')">About</a></li>
+        <li><a (click)="scrollTo('works')">My Work</a></li>
+        <li><a (click)="scrollTo('contact')">Contact</a></li>
+        <li class="toggle-container"><app-dark-mode-toggle></app-dark-mode-toggle></li>
+      </ul>
+    </div>
+  </div>
+</nav>

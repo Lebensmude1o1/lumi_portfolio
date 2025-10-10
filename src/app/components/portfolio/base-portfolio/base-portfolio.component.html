@@ -1,9 +1,63 @@
-<button (click)="onPress()">Press me</button>
+<app-public-navigation></app-public-navigation>
 
-<button (click)="onImage()">Press for Image</button>
+<main>
+  <!-- Hero Section -->
+  <div id="home" class="hero">
+    <div #heroBg class="hero-bg" [style.backgroundImage]="'url(' + heroBgImage + ')'"></div>
+    <div class="hero-content">
+      <div class="profile-picture-alt">
+        <div class="profile-circle"></div>
+        <img src="profile.png" alt="Progress">
+      </div>
+      <h1>{{username}}</h1>
+      <p>Architectural Designer & Sustainable Design Enthusiast</p>
+    </div>
+    <div class="scroll-indicator">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </div>
 
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-card">
+      <p>I'm a final-year architecture student at Nepal Engineering College with a passion for sustainable design and innovative spatial solutions. My journey in architecture has been driven by a commitment to creating spaces that are not only aesthetically pleasing but also environmentally responsible and socially inclusive.</p>
+      <p>Throughout my academic career and professional experiences, I've developed expertise in both traditional architectural workflows and cutting-edge computational design tools. From hands-on site supervision to parametric modeling, I embrace every opportunity to expand my skillset and contribute to meaningful projects.</p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Design Tools Mastered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Months Internship</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<button (click)="on3Dmodel()">Press for 3D model</button>
+  <!-- Work Section -->
+  <section id="works">
+    <h2>My Work</h2>
+    <div class="work-grid">
+      <div *ngIf="isLoadingExperiences" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading experiences...</p>
+      </div>
+      <app-experience *ngFor="let exp of experiences" [experience]="exp"></app-experience>
+    </div>
+  </section>
 
-<!--thing-->
-<button (click)="onLoadExp()">Press for experience Load</button>
+  <!-- Contact Section -->
+  <section id="contact">
+    <app-contact></app-contact>
+  </section>
+</main>
+
+<footer>
+  <p>© {{ ( today | date:'yyyy' ) }} {{username}}. Crafting sustainable spaces for a better tomorrow.</p>
+</footer>

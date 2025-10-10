@@ -1,0 +1,216 @@
+/* Styles adapted from demo.html */
+
+:host {
+  display: block;
+  background-color: var(--background);
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+main {
+  padding-top: 0;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+  margin-top: 0;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; // Start higher to account for parallax movement
+  height: 120vh; // Make it taller than the viewport, but contained
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7);
+  transition: background-image 0.5s ease-in-out, filter 0.3s ease;
+  will-change: transform;
+
+  body.dark-theme & {
+    filter: brightness(0.4);
+  }
+  width: 100%;
+  left: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.profile-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Alternative approach using mask (better browser support) */
+.profile-picture-alt {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 2rem;
+  transition: transform 0.3s ease;
+}
+
+.profile-picture-alt:hover {
+  transform: scale(1.05);
+}
+
+.profile-picture-alt .profile-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: visible;
+}
+
+.profile-picture-alt img {
+  position: absolute;
+  width: 110%;
+  height: 130%;
+  object-fit: cover;
+  object-position: center 20%;
+  top: -30%;
+  left: -5%;
+  z-index: 2;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transition: transform 0.3s ease;
+}
+
+.profile-picture-alt:hover img {
+  transform: scale(1.03) translateY(-2px);
+}
+
+/* Create a subtle shadow behind the popping image */
+.profile-picture-alt::after {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 40%;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  bottom: -10px;
+  left: 5%;
+  z-index: 1;
+  filter: blur(8px);
+  transition: transform 0.3s ease;
+}
+
+.profile-picture-alt:hover::after {
+  transform: scale(1.05);
+}
+
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  color: var(--rose-pink-200);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 720px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1.125rem;
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  color: white;
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* General Section Styling */
+section {
+  padding: 5rem 1rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* About Section */
+.about-card {
+  background: var(--surface);
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Work Section */
+.work-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  color: var(--text-secondary);
+}
+
+/* Footer */
+footer {
+  background: var(--secondary-dark);
+  color: var(--text-secondary);
+  padding: 2rem 1rem;
+  text-align: center;
+}

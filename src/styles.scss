@@ -1,8 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -21,76 +19,100 @@ $sadiksha-theme: mat.define-theme((
   )
 ));
 
-$dark-theme: mat.define-theme((
-  color: (
-    theme-type: dark,
-    primary: mat.$magenta-palette,
-    tertiary: mat.$red-palette,
-  ),
-  density: (
-    scale: 0,
-  )
-));
-
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+/*
+  Define a gorgeous rose-pink inspired color palette.
+  This will be the foundation for both light and dark themes.
+*/
 :root {
   @include mat.all-component-themes($sadiksha-theme);
 
-  --text-light: #000000;
-  --text-dark: #ffffff;
+  // Base color definitions
+  --rose-pink-50: #fdf2f8;
+  --rose-pink-100: #fce7f3;
+  --rose-pink-200: #fbcfe8;
+  --rose-pink-300: #f9a8d4;
+  --rose-pink-400: #f472b6;
+  --rose-pink-500: #ec4899; // Main accent
+  --rose-pink-600: #db2777;
+  --rose-pink-700: #be185d;
+  --rose-pink-800: #9d174d;
+  --rose-pink-900: #831843;
 
-
-
-  --accent-success: #27ae60;      /* Green for success or 'Agree' buttons */
-  --accent-success-dark: #229954; /* A darker green for hover effects */
-
-  --accent-warning: #f39c12;      /* Orange for warnings or actions that require caution */
-  --accent-warning-dark: #e67e22; /* A darker orange for hover effects */
-
-  --accent-danger: #e74c3c;       /* Red for destructive actions or 'Danger' buttons */
-  --accent-danger-dark: #c0392b;  /* A darker red for hover effects */
-
-  --accent-info: #0ecfd6;
-  --accent-info-dark: #078076;
-
-  /* Backgrounds */
-  --background-light: #FFFFFF;
-  --background-dark: #000000;
-
-  /* Shadow Colors */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-
-  /* Spacing (optional - for consistency across components) */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-
-  /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
 }
 
-// Comment out the line below if you want to use the pre-defined typography utility classes.
-// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
-// @include mat.typography-hierarchy($sadiksha-theme);
+/*
+  Light Theme (Default)
+  Applied when no specific theme class is on the <body>
+*/
+:root, body.light-theme {
+  // Primary colors are based on the vibrant rose-pink
+  --primary: var(--rose-pink-400);
+  --primary-light: var(--rose-pink-300);
+  --primary-dark: var(--rose-pink-500);
 
-// Comment out the line below if you want to use the deprecated `color` inputs.
-// @include mat.color-variants-backwards-compatibility($sadiksha-theme);
-/* You can add global styles to this file, and also import other style files */
+  // Secondary colors are a lighter gray
+  --secondary: var(--neutral-400);
+  --secondary-light: var(--neutral-300);
+  --secondary-dark: var(--neutral-500);
+
+  // Backgrounds
+  --background: var(--neutral-50);       // Main page background
+  --surface: #ffffff;                    // Card backgrounds
+  --surface-alt: var(--neutral-100);     // Slightly off-white surfaces
+
+  // Text colors
+  --text-primary: var(--neutral-800);    // Main text
+  --text-secondary: var(--neutral-600);  // Subtitles, less important text
+  --text-on-primary: #ffffff;            // Text on a primary-colored background
+
+  // Border color
+  --border: var(--neutral-200);
+}
+
+/*
+  Dark Theme
+  Applied when body has the class "dark-theme"
+*/
+body.dark-theme {
+  // Primary colors are a lighter, more vibrant pink for contrast
+  --primary: var(--rose-pink-600);
+  --primary-light: var(--rose-pink-500);
+  --primary-dark: var(--rose-pink-700);
+
+  // Secondary colors are a complementary cool gray
+  --secondary: var(--neutral-700);
+  --secondary-light: var(--neutral-600);
+  --secondary-dark: var(--neutral-800);
+
+  // Backgrounds are dark grays
+  --background: var(--neutral-900);      // Main page background
+  --surface: var(--neutral-800);         // Card backgrounds
+  --surface-alt: var(--neutral-700);     // Slightly different dark surfaces
+
+  // Text colors are light
+  --text-primary: var(--neutral-100);    // Main text
+  --text-secondary: var(--neutral-400);  // Subtitles
+  --text-on-primary: var(--neutral-900); // Text on a primary-colored background
+
+  // Border color
+  --border: var(--neutral-700);
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

@@ -1,0 +1,214 @@
+/* Styles adapted from demo.html for .work-card */
+
+.work-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.work-card-content {
+  padding: 2rem;
+}
+
+.work-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.work-title-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.work-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.work-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-internship { background: #dbeafe; color: #1e40af; }
+.badge-academic { background: #f3e8ff; color: #6b21a8; }
+.badge-freelance { background: #dcfce7; color: #15803d; }
+.badge-training { background: #fed7aa; color: #9a3412; }
+
+.work-company {
+  color: #9333ea;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.work-date {
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.work-description {
+  color: #374151;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  aspect-ratio: 16/9;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: black;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover::after {
+    opacity: 0.3;
+  }
+}
+
+.work-details {
+  margin-top: 1.5rem;
+  display: none;
+
+  &.show {
+    display: block;
+    animation: fadeIn 0.3s;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.achievements, .technologies, .extra-links {
+  margin-bottom: 1.5rem;
+}
+
+.details-title {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    color: #9333ea;
+  }
+}
+
+.achievements ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: #374151;
+
+  li {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  padding: 0.25rem 0.75rem;
+  background: #f3f4f6;
+  color: #374151;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.model-link {
+  display: inline-flex;
+  align-items: center;
+  color: #9333ea;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 1.5rem;
+
+  &:hover {
+    color: #7e22ce;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.toggle-button {
+  margin-top: 1rem;
+  color: #9333ea;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #7e22ce;
+  }
+}
