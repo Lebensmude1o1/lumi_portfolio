@@ -271,6 +271,7 @@ footer {
   color: var(--text-primary);
   transition: box-shadow 0.2s ease-in-out;
   touch-action: none;
+  animation: pulsate 0.9s infinite;
 }
 
 /* Style applied by the CDK while the element is being dragged */
@@ -289,4 +290,16 @@ footer {
 .cdk-drag-preview {
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
   z-index: 51;
+}
+
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 0 0 rgba(188, 7, 7, 0.4); /* Corresponds to rose-pink-400 */
+  }
+  70% {
+    box-shadow: 0 0 0 30px rgba(244, 114, 182, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 114, 182, 0);
+  }
 }
