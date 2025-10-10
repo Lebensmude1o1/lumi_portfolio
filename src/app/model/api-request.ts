@@ -1,5 +1,5 @@
-export interface ChatInputDTO{
-  message: string;
-  userId: number;
+export interface MessegeRequest {
   sessionId: string;
+  userId: number;
+  message: string;
 }

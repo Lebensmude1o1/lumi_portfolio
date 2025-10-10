@@ -1,4 +1,4 @@
-<app-public-navigation></app-public-navigation>
+<app-public-navigation [isChatOpen]="isChatOpen"></app-public-navigation>
 
 <main>
   <!-- Hero Section -->
@@ -56,8 +56,28 @@
   <section id="contact">
     <app-contact></app-contact>
   </section>
+  <button
+    class="mobile-menu-trigger"
+    *ngIf="!isChatOpen"
+    (click)="toggleChat(!isChatOpen)"
+    cdkDrag
+    cdkDragBoundary="main"
+    [cdkDragFreeDragPosition]="dragPosition"
+    (cdkDragStarted)="onDragStarted()"
+    (cdkDragEnded)="onDragEnded($event)"
+  >
+    <mat-icon>forum</mat-icon>
+  </button>
 </main>
 
 <footer>
   <p>© {{ ( today | date:'yyyy' ) }} {{username}}. Crafting sustainable spaces for a better tomorrow.</p>
 </footer>
+
+
+
+<!-- Chat components remain at the end, outside the main content flow -->
+<app-chat
+  [isOpen]="isChatOpen"
+  (close)="toggleChat($event)">
+</app-chat>

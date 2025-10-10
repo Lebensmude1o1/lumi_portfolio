@@ -251,3 +251,42 @@ footer {
   padding: 2rem 1rem;
   text-align: center;
 }
+
+
+.mobile-menu-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 50;
+  width: 48px;
+  height: 48px;
+  background: var(--primary-light);
+  border: 1px solid var(--secondary-light);
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  cursor: move;
+  color: var(--text-primary);
+  transition: box-shadow 0.2s ease-in-out;
+  touch-action: none;
+}
+
+/* Style applied by the CDK while the element is being dragged */
+.cdk-drag-dragging {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  z-index: 51 !important;
+  cursor: grabbing !important;
+}
+
+/* Ensure the drag placeholder maintains position */
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+/* Preview element while dragging */
+.cdk-drag-preview {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  z-index: 51;
+}

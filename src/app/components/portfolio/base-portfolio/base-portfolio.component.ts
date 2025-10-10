@@ -9,6 +9,9 @@ import {ExperienceComponent} from "../experience/experience.component";
 import {ContactComponent} from "../contact/contact.component";
 import {SnackbarService} from "../../../services/snackbar.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {ChatComponent} from "../chat-bot/chat/chat.component";
+import {MatIcon} from "@angular/material/icon";
+import {CdkDrag, CdkDragEnd} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-base-portfolio',
@@ -17,7 +20,10 @@ import {HttpErrorResponse} from "@angular/common/http";
     PublicNavigationComponent,
     CommonModule,
     ExperienceComponent,
-    ContactComponent
+    ContactComponent,
+    ChatComponent,
+    MatIcon,
+    CdkDrag
   ],
   templateUrl: './base-portfolio.component.html',
   styleUrl: './base-portfolio.component.scss'
@@ -30,6 +36,10 @@ export class BasePortfolioComponent implements OnInit, OnDestroy {
   username = environment.username;
   heroBgImage = 'backgroundHorizontal.webp';
   today = new Date();
+  isChatOpen = false;
+
+  // Store the drag position
+  dragPosition = {x: 0, y: 0};
 
   @ViewChild('heroBg', { static: true }) heroBg!: ElementRef;
 
@@ -41,6 +51,18 @@ export class BasePortfolioComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadExperiences();
+  }
+
+  toggleChat(isOpen: boolean) {
+    this.isChatOpen = isOpen;
+  }
+
+  onDragStarted() {
+    // Optional: Add any drag start logic
+  }
+
+  onDragEnded(event: CdkDragEnd) {
+    this.dragPosition = event.source.getFreeDragPosition();
   }
 
   @HostListener('window:resize', ['$event'])

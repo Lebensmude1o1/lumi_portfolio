@@ -26,6 +26,11 @@ $sadiksha-theme: mat.define-theme((
 :root {
   @include mat.all-component-themes($sadiksha-theme);
 
+  --error: #b00020; // Standard Material Design error color
+  --warning: #ff9800; // Standard Material Design warning color
+  --success: #4caf50; // Standard Material Design success color
+  --info: #2196f3; // Standard Material Design info color
+
   // Base color definitions
   --rose-pink-50: #fdf2f8;
   --rose-pink-100: #fce7f3;

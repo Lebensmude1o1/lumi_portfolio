@@ -1,0 +1,73 @@
+<mat-card
+  class="chat-container"
+  [class.active]="isOpen"
+  [class.mobile]="isMobile"
+  [style.transform-origin]="transformOrigin"
+>
+  <mat-card-header>
+    <mat-card-title>Chat with progress AI</mat-card-title>
+    <button mat-icon-button class="close-button" (click)="closeChat()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-card-header>
+
+  <mat-card-content class="chat-messages" #messagesContainer>
+    <!-- Load More Section for historical chats -->
+    <div class="load-more-container">
+      <button mat-stroked-button class="load-more-btn"
+              *ngIf="!historyAllLoaded && !isLoadingHistory"
+              (click)="loadChatHistory(historyCurrentPage + 1)">
+        Load more messages
+      </button>
+      <div *ngIf="isLoadingHistory" class="loading-indicator">
+        <mat-progress-spinner mode="indeterminate" diameter="24"></mat-progress-spinner>
+      </div>
+      <div *ngIf="historyAllLoaded" class="no-more-messages">
+        <mat-icon>check_circle</mat-icon>
+        <span>Beginning of conversation</span>
+      </div>
+    </div>
+
+    <div class="message ai" *ngIf="historyAllLoaded">
+      Hello! How can I help you learn more about {{userName}}?
+    </div>
+
+    <div *ngFor="let message of messages"
+         class="message"
+         [class.ai]="!message.isUser"
+         [class.user]="message.isUser">
+      {{ message.content }}
+    </div>
+
+    <!-- Typing indicator -->
+    <div *ngIf="isTyping" class="message ai typing-indicator">
+      <div class="typing-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span class="typing-text">Progress AI is typing...</span>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions *ngIf="!disableInputs" class="chat-input">
+    <div class="input-container">
+      <input
+        #messageInput
+        [(ngModel)]="currentMessage"
+        placeholder="Type a message..."
+        (keydown)="onEnterPress($event)"
+        [disabled]="isTyping"
+        class="message-input"
+      />
+      <button
+        (click)="sendMessage()"
+        [disabled]="isTyping || !currentMessage.trim()"
+        class="send-button"
+        [class.active]="currentMessage.trim() && !isTyping"
+      >
+        <mat-icon>{{isTyping ? 'hourglass_empty' : 'send'}}</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

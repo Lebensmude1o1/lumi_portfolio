@@ -117,6 +117,9 @@
   .nav-links li {
     border-bottom: 1px solid var(--background-light);
   }
+  .hide-on-mobile{
+    display: none;
+  }
 }
 
 // Keyframe animation for the shine effect
