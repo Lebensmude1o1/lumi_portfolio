@@ -9,8 +9,8 @@ import {CommonModule} from "@angular/common";
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  email = 'sadikshashrestha9@gmail.com';
-  linkedinUrl = 'https://www.linkedin.com/in/progress-maharjan-641747286/'; // Replace with your LinkedIn URL
-  instagramUrl = 'https://www.instagram.com/__sadiksha____/?hl=en'; // Replace with your Instagram URL
-  facebookUrl = 'https://www.facebook.com/sadikshya.shrestha.501'; // Replace with your Facebook URL
+  email = 'lumantimaharjan0312@gmail.com';
+  linkedinUrl = 'https://www.linkedin.com/in/justin-seagull-4282b8314/'; // Replace with your LinkedIn URL
+  instagramUrl = 'https://www.instagram.com/crystal_snow.01/?hl=en'; // Replace with your Instagram URL
+  facebookUrl = 'https://www.facebook.com/laira.maharjan.106'; // Replace with your Facebook URL
 }
