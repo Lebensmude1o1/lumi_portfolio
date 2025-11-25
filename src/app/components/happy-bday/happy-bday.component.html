@@ -1,0 +1,64 @@
+<div class="birthday-container">
+  <!-- Confetti Animation -->
+  <div class="confetti-container">
+    <div
+      *ngFor="let conf of confetti"
+      class="confetti"
+      [style.left.%]="conf.left"
+      [style.animation-delay]="conf.animationDelay"
+      [style.background-color]="conf.color">
+    </div>
+  </div>
+
+  <!-- Floating Hearts -->
+  <div class="hearts-container">
+    <div
+      *ngFor="let heart of hearts"
+      class="heart"
+      [style.left.%]="heart.left"
+      [style.animation-delay]="heart.animationDelay">
+      ❤️
+    </div>
+  </div>
+
+  <!-- Balloons -->
+  <div class="balloons-container">
+    <div
+      *ngFor="let balloon of balloons"
+      class="balloon"
+      [style.left.%]="balloon.left"
+      [style.animation-delay]="balloon.animationDelay">
+      <div class="balloon-body" [style.background-color]="balloon.color"></div>
+      <div class="balloon-string"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Birthday Cake Animation -->
+    <div class="cake-container" *ngIf="showName" [@bounce]>
+      <div class="cake">
+        <div class="candle">
+          <div class="flame"></div>
+        </div>
+        <div class="cake-layer layer-top"></div>
+        <div class="cake-layer layer-middle"></div>
+        <div class="cake-layer layer-bottom"></div>
+      </div>
+    </div>
+
+    <!-- Name Animation -->
+    <div class="name-section" *ngIf="showName" [@fadeIn]>
+      <h1 class="birthday-title">Happy Birthday</h1>
+      <h2 class="name">BITCHHHHHHH!!!!</h2>
+      <div class="sparkle">✨🎉✨</div>
+    </div>
+
+    <!-- Message Section -->
+    <div class="message-section" *ngIf="showMessage" [@slideUp]>
+      <div class="message-card">
+        <div class="message-content">{{ displayedMessage }}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,355 @@
+.birthday-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Confetti Animation */
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  opacity: 0;
+  animation: confetti-fall 4s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    top: -10px;
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  100% {
+    top: 100vh;
+    opacity: 0;
+    transform: rotate(720deg);
+  }
+}
+
+/* Hearts Animation */
+.hearts-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  bottom: -50px;
+  opacity: 0;
+  animation: float-hearts 8s ease-in-out infinite;
+}
+
+@keyframes float-hearts {
+  0% {
+    bottom: -50px;
+    opacity: 0;
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 110vh;
+    opacity: 0;
+    transform: translateX(100px) rotate(360deg);
+  }
+}
+
+/* Balloons */
+.balloons-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  animation: float-balloon 6s ease-in-out infinite;
+}
+
+.balloon-body {
+  width: 60px;
+  height: 75px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: relative;
+  box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.07);
+}
+
+.balloon-body::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+}
+
+.balloon-string {
+  width: 2px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  left: 50%;
+  top: 75px;
+  transform: translateX(-50%);
+}
+
+@keyframes float-balloon {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-30px) translateX(10px);
+  }
+}
+
+/* Main Content */
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+/* Cake Animation */
+.cake-container {
+  margin-bottom: 40px;
+}
+
+.cake {
+  position: relative;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.candle {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 40px;
+  background: linear-gradient(to bottom, #fff 0%, #f8f8f8 100%);
+  border-radius: 5px 5px 0 0;
+  z-index: 10;
+}
+
+.flame {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 30px;
+  background: #ff6b35;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flicker 1s infinite alternate;
+}
+
+.flame::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 15px;
+  background: #ffa500;
+  border-radius: 50%;
+}
+
+@keyframes flicker {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.cake-layer {
+  width: 100%;
+  border-radius: 10px;
+  position: relative;
+  margin: 5px 0;
+}
+
+.layer-top {
+  height: 40px;
+  background: linear-gradient(to bottom, #ff6b9d 0%, #c44569 100%);
+}
+
+.layer-middle {
+  height: 50px;
+  background: linear-gradient(to bottom, #f8b500 0%, #e67e22 100%);
+  width: 110%;
+  left: -5%;
+}
+
+.layer-bottom {
+  height: 60px;
+  background: linear-gradient(to bottom, #00d2ff 0%, #3a7bd5 100%);
+  width: 120%;
+  left: -10%;
+}
+
+/* Name Section */
+.name-section {
+  margin: 40px 0;
+}
+
+.birthday-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.name {
+  font-size: 3rem;
+  font-weight: 600;
+  background: linear-gradient(45deg, #ff6b9d, #feca57, #48dbfb, #ff9ff3);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+  margin: 20px 0;
+}
+
+.sparkle {
+  font-size: 2rem;
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* Message Section */
+.message-section {
+  margin-top: 60px;
+}
+
+.message-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.message-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ff6b9d, #feca57, #48dbfb, #ff9ff3);
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.message-content {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-wrap;
+  text-align: left;
+  font-family: 'Georgia', serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .birthday-title {
+    font-size: 2.5rem;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .message-card {
+    padding: 20px;
+  }
+
+  .message-content {
+    font-size: 1rem;
+  }
+
+  .cake {
+    width: 150px;
+  }
+
+  .balloon-body {
+    width: 40px;
+    height: 50px;
+  }
+}
