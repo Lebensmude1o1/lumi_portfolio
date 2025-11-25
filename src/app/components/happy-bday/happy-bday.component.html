@@ -1,63 +1,59 @@
 <div class="birthday-container">
-  <!-- Confetti Animation -->
-  <div class="confetti-container">
+  <!-- Countdown Screen -->
+  <div class="countdown-screen" *ngIf="showCountdown" [@fadeIn]>
+    <div class="countdown-number" [@shake]>{{ countdownNumber }}</div>
+    <div class="countdown-text">Get Ready...</div>
+  </div>
+
+  <!-- Confetti Explosion -->
+  <div class="confetti-container" *ngIf="showExplosion">
     <div
       *ngFor="let conf of confetti"
       class="confetti"
       [style.left.%]="conf.left"
       [style.animation-delay]="conf.animationDelay"
-      [style.background-color]="conf.color">
+      [style.background-color]="conf.color"
+      [style.transform]="'rotate(' + conf.rotation + 'deg)'">
     </div>
   </div>
 
-  <!-- Floating Hearts -->
-  <div class="hearts-container">
+  <!-- Funny Emoji Rain -->
+  <div class="emoji-container" *ngIf="showExplosion">
     <div
-      *ngFor="let heart of hearts"
-      class="heart"
-      [style.left.%]="heart.left"
-      [style.animation-delay]="heart.animationDelay">
-      ❤️
-    </div>
-  </div>
-
-  <!-- Balloons -->
-  <div class="balloons-container">
-    <div
-      *ngFor="let balloon of balloons"
-      class="balloon"
-      [style.left.%]="balloon.left"
-      [style.animation-delay]="balloon.animationDelay">
-      <div class="balloon-body" [style.background-color]="balloon.color"></div>
-      <div class="balloon-string"></div>
+      *ngFor="let item of emojis"
+      class="emoji"
+      [style.left.%]="item.left"
+      [style.animation-delay]="item.animationDelay">
+      {{ item.emoji }}
     </div>
   </div>
 
   <!-- Main Content -->
-  <div class="content">
-    <!-- Birthday Cake Animation -->
+  <div class="content" *ngIf="showExplosion">
+    <!-- Spinning Cake -->
     <div class="cake-container" *ngIf="showName" [@bounce]>
-      <div class="cake">
-        <div class="candle">
-          <div class="flame"></div>
+      <div class="cake-spinning">
+        <div class="cake">
+          🎂
         </div>
-        <div class="cake-layer layer-top"></div>
-        <div class="cake-layer layer-middle"></div>
-        <div class="cake-layer layer-bottom"></div>
       </div>
     </div>
 
-    <!-- Name Animation -->
+    <!-- Name with Funny Animation -->
     <div class="name-section" *ngIf="showName" [@fadeIn]>
-      <h1 class="birthday-title">Happy Birthday</h1>
-      <h2 class="name">BITCHHHHHHH!!!!</h2>
-      <div class="sparkle">✨🎉✨</div>
+      <h1 class="birthday-title">HAPPY BIRTHDAY</h1>
+      <h2 class="name">BITCHHHHH!!!!</h2>
     </div>
 
     <!-- Message Section -->
     <div class="message-section" *ngIf="showMessage" [@slideUp]>
       <div class="message-card">
+        <div class="message-header">📜 Scroll of Wisdom for this year 📜</div>
         <div class="message-content">{{ displayedMessage }}</div>
+        <div class="message-footer">
+          <div class="signature">- Your GOD! 😎</div>
+          <div class="ps">(Worship me With Really Delicious Foods)</div>
+        </div>
       </div>
     </div>
   </div>
